@@ -26,65 +26,55 @@ h6 {
   color: #778492;
 }
 a {
-  color: #3AAA64;
-  -webkit-transition: all 0.4s ease-in-out;
-  -moz-transition: all 0.4s ease-in-out;
-  -ms-transition: all 0.4s ease-in-out;
-  -o-transition: all 0.4s ease-in-out;
+  color: inherit;
+  transition: all 0.4s ease-in-out;
 }
-a:hover {
-  text-decoration: underline;
-  color: #5f6b77;
-  color: #2d844e;
-}
+a:hover,
 a:focus {
-  text-decoration: none;
+  color: inherit;
+  text-decoration: underline;
 }
 .btn,
-a.btn {
-  -webkit-transition: all 0.4s ease-in-out;
-  -moz-transition: all 0.4s ease-in-out;
-  -ms-transition: all 0.4s ease-in-out;
-  -o-transition: all 0.4s ease-in-out;
-  font-family: 'Montserrat', arial, sans-serif;
-  padding: 8px 16px;
-  font-weight: bold;
-}
-.btn .fa,
-a.btn .fa {
-  margin-right: 5px;
-}
 .btn:focus,
-a.btn:focus {
-  color: #fff;
+.btn:hover,
+a.btn,
+a.btn:focus,
+a.btn:hover {
+  text-decoration: none;
+  box-shadow: none;
 }
-a.btn-cta-primary,
-.btn-cta-primary {
-  background: #54ba4e;
-  border: 1px solid #54ba4e;
-  color: #fff;
-  font-weight: 600;
-  text-transform: uppercase;
+.btn .material-icons {
+  color: inherit;
+  transition: color var(--md-transition-fast);
 }
-a.btn-cta-primary:hover,
-.btn-cta-primary:hover {
-  background: #49ac43;
-  border: 1px solid #49ac43;
-  color: #fff;
+.btn-primary {
+  background-color: var(--md-primary);
+  color: var(--md-on-primary);
+  box-shadow: var(--md-shadow-elevation-1);
 }
-a.btn-cta-secondary,
-.btn-cta-secondary {
-  background: #479FC8;
-  border: 1px solid #479FC8;
-  color: #fff;
-  font-weight: 600;
-  text-transform: uppercase;
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--md-primary);
+  color: var(--md-on-primary);
 }
-a.btn-cta-secondary:hover,
-.btn-cta-secondary:hover {
-  background: #3893bd;
-  border: 1px solid #3893bd;
-  color: #fff;
+.btn-primary:hover .material-icons,
+.btn-primary:focus .material-icons {
+  color: var(--md-on-primary);
+}
+.btn-secondary {
+  background-color: var(--md-surface);
+  color: var(--md-on-surface);
+  border: 1px solid var(--md-outline-variant);
+}
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background-color: var(--md-surface-variant);
+  color: var(--md-on-surface);
+  border-color: var(--md-outline);
+}
+.btn-secondary:hover .material-icons,
+.btn-secondary:focus .material-icons {
+  color: var(--md-on-surface);
 }
 .text-highlight {
   color: #32383e;
@@ -349,9 +339,6 @@ iframe {
   margin-right: 15px;
   color: #ccd1d6;
 }
-.info .fa.fa-envelope-o {
-  font-size: 14px;
-}
 .info ul {
   margin-bottom: 0;
 }
@@ -517,9 +504,6 @@ iframe {
 }
 .footer a {
   color: #fff;
-}
-.footer .fa-heart {
-  color: #fb866a;
 }
 /* Extra small devices (phones, less than 768px) */
 @media (max-width: 767px) {
@@ -793,12 +777,14 @@ body {
     gap: var(--md-spacing-xs);
 }
 
-.nav-link .material-icons {
-    font-size: 18px;
+.nav-link:hover,
+.nav-link:focus {
+    color: var(--md-on-surface);
+    text-decoration: none;
 }
 
-.nav-link:hover {
-    color: var(--md-on-surface);
+.nav-link .material-icons {
+    font-size: 18px;
 }
 
 .nav-link::after {
@@ -812,7 +798,8 @@ body {
     transition: var(--md-transition-fast);
 }
 
-.nav-link:hover::after {
+.nav-link:hover::after,
+.nav-link:focus::after {
     width: 100%;
 }
 
@@ -903,10 +890,15 @@ body {
     box-shadow: var(--md-shadow-elevation-1);
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:focus {
     background-color: var(--md-primary);
-    box-shadow: var(--md-shadow-elevation-2);
-    transform: translateY(-2px);
+    color: var(--md-on-primary);
+}
+
+.btn-primary:hover .material-icons,
+.btn-primary:focus .material-icons {
+    color: var(--md-on-primary);
 }
 
 .btn-secondary {
@@ -915,9 +907,16 @@ body {
     border: 1px solid var(--md-outline-variant);
 }
 
-.btn-secondary:hover {
+.btn-secondary:hover,
+.btn-secondary:focus {
     background-color: var(--md-surface-variant);
+    color: var(--md-on-surface);
     border-color: var(--md-outline);
+}
+
+.btn-secondary:hover .material-icons,
+.btn-secondary:focus .material-icons {
+    color: var(--md-on-surface);
 }
 
 .social-links {
@@ -939,11 +938,25 @@ body {
     box-shadow: var(--md-shadow-elevation-1);
 }
 
-.social-link:hover {
+.social-link:hover,
+.social-link:focus {
     background-color: var(--md-primary);
     color: var(--md-on-primary);
     transform: translateY(-2px);
     box-shadow: var(--md-shadow-elevation-2);
+    text-decoration: none;
+}
+
+.social-link svg {
+    display: block;
+    width: 24px;
+    height: 24px;
+    fill: var(--social-icon-color, #444);
+    transition: fill 0.2s;
+}
+
+.dark-theme .social-link svg {
+    fill: var(--social-icon-color-dark, #fff);
 }
 
 /* Main Content */
@@ -1155,8 +1168,10 @@ body {
     text-decoration: none;
 }
 
-.project-title a:hover {
+.project-title a:hover,
+.project-title a:focus {
     color: var(--md-primary);
+    text-decoration: underline;
 }
 
 .project-description {
@@ -1200,7 +1215,8 @@ body {
     }
 }
 
-.project-link:hover {
+.project-link:hover,
+.project-link:focus {
     color: var(--md-primary);
     text-decoration: underline;
 }
@@ -1261,8 +1277,10 @@ body {
     text-decoration: none;
 }
 
-.other-project-title a:hover {
+.other-project-title a:hover,
+.other-project-title a:focus {
     color: var(--md-primary);
+    text-decoration: underline;
 }
 
 .project-badge {
@@ -1328,8 +1346,10 @@ body {
     text-decoration: none;
 }
 
-.organization-title a:hover {
+.organization-title a:hover,
+.organization-title a:focus {
     color: var(--md-primary);
+    text-decoration: underline;
 }
 
 .organization-period {
@@ -1377,8 +1397,10 @@ body {
     text-decoration: none;
 }
 
-.activity-title a:hover {
+.activity-title a:hover,
+.activity-title a:focus {
     color: var(--md-primary);
+    text-decoration: underline;
 }
 
 .activity-date {
@@ -1450,7 +1472,8 @@ body {
     text-decoration: none;
 }
 
-.contact-item a:hover {
+.contact-item a:hover,
+.contact-item a:focus {
     text-decoration: underline;
 }
 
@@ -1588,7 +1611,9 @@ body {
     text-decoration: none;
 }
 
-.footer-link:hover {
+.footer-link:hover,
+.footer-link:focus {
+    color: var(--md-primary);
     text-decoration: underline;
 }
 
@@ -1598,7 +1623,9 @@ body {
     text-decoration: none;
 }
 
-.link-primary:hover {
+.link-primary:hover,
+.link-primary:focus {
+    color: var(--md-primary);
     text-decoration: underline;
 }
 
